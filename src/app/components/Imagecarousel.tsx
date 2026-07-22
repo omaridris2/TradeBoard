@@ -45,7 +45,7 @@ const SLIDES: CarouselSlide[] = [
     title: "DeFi TVL hits yearly high",
     subtitle: "Lending protocols see renewed inflows",
     ticker: "AAVE",
-    image: "/bitcoin.jpg",
+    image: "/coins.jpg",
   },
 ];
 
