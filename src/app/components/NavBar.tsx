@@ -33,7 +33,7 @@ const NavBar = () => {
       return;
     }
 
-    const demoUser = { name: "Demo Trader", email: "demo@tradeboard.app" };
+    const demoUser = { name: "Invizion user! ", email: "demo@tradeboard.app" };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(demoUser));
     setUserName(demoUser.name);
     setIsSignedIn(true);
@@ -69,7 +69,7 @@ const NavBar = () => {
               className="flex items-center gap-2 rounded-full bg-[#48c2be] px-3 py-2 text-sm font-semibold text-black transition hover:bg-cyan-400"
             >
               {isSignedIn ? `Hi, ${userName}` : "Sign in"}
-              <ChevronDown size={16} />
+              
             </button>
             <span className="mt-1 text-[11px] text-slate-400">
               

@@ -99,7 +99,7 @@ const PLACEHOLDER_NEWS: NewsItem[] = [
 ];
 
 async function fetchNews(): Promise<NewsItem[]> {
-  // Simulate network latency so loading states can still be previewed.
+  //network latency so loading states can still be previewed.
   await new Promise((resolve) => setTimeout(resolve, 400));
   return PLACEHOLDER_NEWS;
 }
@@ -115,7 +115,7 @@ function timeAgo(iso: string): string {
   return `${days}d ago`;
 }
 
-// ...rest unchanged (SentimentBadge, MarketNewsTable) — see file below
+
 
 function SentimentBadge({ sentiment }: { sentiment: NewsItem["sentiment"] }) {
   const styles = {

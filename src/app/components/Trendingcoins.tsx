@@ -64,7 +64,7 @@ function TrendingCoinCard({ coin, rank }: TrendingCoinCardProps) {
       className="flex min-w-[220px] flex-shrink-0 items-center gap-3 rounded-lg border border-neutral-800 bg-[#1f2532] p-3 transition hover:border-[#48c2be]"
     >
       <span className="text-xs font-medium text-neutral-500">#{rank}</span>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      
       <img src={coin.small} alt={coin.name} width={28} height={28} className="rounded-full" />
       <div className="flex min-w-0 flex-1 flex-col">
         <span className="truncate text-sm font-medium text-neutral-100">{coin.name}</span>

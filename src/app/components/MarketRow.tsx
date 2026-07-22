@@ -20,8 +20,7 @@ interface MarketRowProps {
 }
 
 function TrendArrow({ direction }: { direction: "up" | "down" }) {
-  // Base path points northeast (up-right). Mirroring vertically
-  // (scale-y: -1) flips it to southeast (down-right) for negative moves.
+  
   return (
     <svg
       viewBox="0 0 12 12"
@@ -67,7 +66,7 @@ function MarketRow({ coin, isSelected, onSelect }: MarketRowProps) {
       }`}
     >
       <td className="relative px-4 py-3">
-        {/* Selection Indicator Line */}
+       
         {isSelected && (
           <span className="absolute inset-y-0 left-0 w-2.5 bg-amber-500" />
         )}
@@ -102,9 +101,9 @@ function MarketRow({ coin, isSelected, onSelect }: MarketRowProps) {
   );
 }
 
-// Only re-render a row when its own coin data or selection state changes —
+// Only rerender a row when its own coin data or selection state changes 
 // not when a sibling row is selected or the poll returns a new array
-// reference with otherwise-identical values.
+// reference with otherwise-identical values
 export default memo(MarketRow, (prev, next) => {
   return (
     prev.isSelected === next.isSelected &&
