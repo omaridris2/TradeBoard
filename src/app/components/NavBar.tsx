@@ -1,11 +1,47 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import { useEffect, useState } from "react";
 import { Bell, Bitcoin, ChevronDown } from "lucide-react";
 
+const STORAGE_KEY = "tradeboard-demo-auth";
+
 const NavBar = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [userName, setUserName] = useState("Guest");
+
+  useEffect(() => {
+    try {
+      const storedValue = window.localStorage.getItem(STORAGE_KEY);
+      if (!storedValue) return;
+
+      const parsedUser = JSON.parse(storedValue) as { name?: string };
+      if (parsedUser.name) {
+        setUserName(parsedUser.name);
+        setIsSignedIn(true);
+      }
+    } catch {
+      window.localStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  const handleAuthToggle = () => {
+    if (isSignedIn) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      setIsSignedIn(false);
+      setUserName("Guest");
+      return;
+    }
+
+    const demoUser = { name: "Demo Trader", email: "demo@tradeboard.app" };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(demoUser));
+    setUserName(demoUser.name);
+    setIsSignedIn(true);
+  };
+
   const links = [
     { name: "Dashboard", href: "/dashboard" },
-    { name: "Markets", href: "/markets" },
+    { name: "Markets", href: "#" },
     { name: "Watchlist", href: "#" },
     { name: "News", href: "#" },
   ];
@@ -19,24 +55,26 @@ const NavBar = () => {
           </div>
 
           <div>
-            <p className="text-lg font-semibold tracking-tight">
-              TradeBoard
-            </p>
-            <p className="text-xs text-slate-400">
-              Live crypto insights
-            </p>
+            <p className="text-lg font-semibold tracking-tight">TradeBoard</p>
+            <p className="text-xs text-slate-400">Live crypto insights</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <button className="rounded-full border border-slate-700 p-2 text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400">
-            <Bell size={16} />
-          </button>
+          
 
-          <button className="flex items-center gap-2 rounded-full bg-[#48c2be] px-3 py-2 text-sm font-semibold text-black transition hover:bg-cyan-400">
-            Sign in
-            <ChevronDown size={16} />
-          </button>
+          <div className="flex flex-col items-end">
+            <button
+              onClick={handleAuthToggle}
+              className="flex items-center gap-2 rounded-full bg-[#48c2be] px-3 py-2 text-sm font-semibold text-black transition hover:bg-cyan-400"
+            >
+              {isSignedIn ? `Hi, ${userName}` : "Sign in"}
+              <ChevronDown size={16} />
+            </button>
+            <span className="mt-1 text-[11px] text-slate-400">
+              
+            </span>
+          </div>
         </div>
       </div>
 
@@ -49,9 +87,7 @@ const NavBar = () => {
             key={link.name}
             href={link.href}
             className={`relative mr-6 py-4 pr-6 text-lg font-bold transition ${
-              index === 0
-                ? "text-white"
-                : "text-slate-400 hover:text-white"
+              index === 0 ? "text-white" : "text-slate-400 hover:text-white"
             }`}
           >
             {link.name}

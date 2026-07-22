@@ -5,6 +5,8 @@ import NavBar from '../components/NavBar';
 
 import TrendingCoins from '../components/Trendingcoins';
 import GlobalStatsBar from '../components/Globalstatsbar';
+import Footer from '../components/Footer';
+
 const Dashboard = () => {
   return (
     <div>
@@ -12,6 +14,7 @@ const Dashboard = () => {
       <GlobalStatsBar />
       
       <MarketWatchTable />
+     <Footer></Footer>
     </div>
   )
 }
