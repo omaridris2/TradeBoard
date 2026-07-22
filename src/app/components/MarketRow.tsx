@@ -8,6 +8,9 @@ export interface CoinMarket {
   current_price: number;
   price_change_percentage_24h: number;
   total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  last_updated: string;
 }
 
 interface MarketRowProps {
@@ -55,7 +58,10 @@ function MarketRow({ coin, isSelected, onSelect }: MarketRowProps) {
 
   return (
     <tr
-      onClick={() => onSelect(coin.id)}
+      onClick={(event) => {
+        event.stopPropagation();
+        onSelect(coin.id);
+      }}
       className={`cursor-pointer border-b border-neutral-900 transition-colors last:border-b-0 ${
         isSelected ? "bg-amber-500/[0.07]" : "hover:bg-neutral-900/60"
       }`}
@@ -63,7 +69,7 @@ function MarketRow({ coin, isSelected, onSelect }: MarketRowProps) {
       <td className="relative px-4 py-3">
         {/* Selection Indicator Line */}
         {isSelected && (
-          <span className="absolute inset-y-0 left-0 w-[10px] bg-amber-500" />
+          <span className="absolute inset-y-0 left-0 w-2.5 bg-amber-500" />
         )}
         <div className="flex items-center gap-2">
           <img src={coin.image} alt="" className="h-5 w-5 rounded-full" />

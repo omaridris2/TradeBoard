@@ -25,7 +25,7 @@ export default function SearchBar({
         value={value}
         onChange={(event) => onChange(event.currentTarget.value)}
         placeholder={placeholder ?? "Search by name or symbol..."}
-        className="w-full rounded-lg border border-neutral-700 bg-[#1d2330] pl-11 pr-4 py-3 text-sm text-neutral-100 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+        className="w-full rounded-lg  bg-[#1d2330] pl-11 pr-4 py-3 text-sm text-neutral-100 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
       />
     </div>
   );

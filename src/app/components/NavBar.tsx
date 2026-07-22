@@ -1,51 +1,69 @@
-import React from 'react'
-import { Bell, ChevronDown, Search, TrendingUp } from 'lucide-react'
+import Link from "next/link";
+import React from "react";
+import { Bell, Bitcoin, ChevronDown } from "lucide-react";
 
 const NavBar = () => {
-  const links = ['Overview', 'Markets', 'Watchlist', 'News']
+  const links = [
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "Markets", href: "/markets" },
+    { name: "Watchlist", href: "#" },
+    { name: "News", href: "#" },
+  ];
 
   return (
-    <header className="border-b border-slate-800/70 bg-[#283042] text-slate-100 shadow-lg shadow-slate-950/20 mb-5">
+    <header className="mb-5 border-b border-slate-800/70 bg-[#283042] text-slate-100 shadow-lg shadow-slate-950/20">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[cyan-500/15] text-cyan-400">
-            <TrendingUp size={18} />
+          <div className="flex h-10 w-10 items-center justify-center rounded-full text-cyan-400">
+            <Bitcoin size={50} />
           </div>
+
           <div>
-            <p className="text-lg font-semibold tracking-tight">TradeBoard</p>
-            <p className="text-xs text-slate-400">Live crypto insights</p>
+            <p className="text-lg font-semibold tracking-tight">
+              TradeBoard
+            </p>
+            <p className="text-xs text-slate-400">
+              Live crypto insights
+            </p>
           </div>
         </div>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {links.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-sm font-medium text-slate-300 transition hover:text-white"
-            >
-              {link}
-            </a>
-          ))}
-        </nav>
-
         <div className="flex items-center gap-2 sm:gap-3">
-         
-
           <button className="rounded-full border border-slate-700 p-2 text-slate-300 transition hover:border-cyan-400 hover:text-cyan-400">
             <Bell size={16} />
           </button>
 
-          <button className="flex items-center gap-2 rounded-full bg-cyan-500 px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400">
+          <button className="flex items-center gap-2 rounded-full bg-[#48c2be] px-3 py-2 text-sm font-semibold text-black transition hover:bg-cyan-400">
             Sign in
             <ChevronDown size={16} />
           </button>
         </div>
       </div>
 
-      
-    </header>
-  )
-}
+      <div className="border-b border-slate-700" />
 
-export default NavBar
+      {/* Bottom Bar */}
+      <div className="mx-auto flex max-w-7xl items-center gap-60 px-4 lg:px-6">
+        {links.map((link, index) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className={`relative mr-6 py-4 pr-6 text-lg font-bold transition ${
+              index === 0
+                ? "text-white"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            {link.name}
+
+            {index === 0 && (
+              <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-[#48c2be]" />
+            )}
+          </Link>
+        ))}
+      </div>
+    </header>
+  );
+};
+
+export default NavBar;
