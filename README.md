@@ -32,8 +32,8 @@ cd tradeboard
 ```bash
 npm install
 ```
-
-
+### 5. if github deleted the env file use make a file named .env in the root of the project ### and add this inside it
+NEXT_PUBLIC_COINGECKO_API_KEY=CG-vGic1BXV2qjptsdB5rJtVftv
 
 
 
