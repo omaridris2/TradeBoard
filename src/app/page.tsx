@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart3, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import SeoJsonLd from "@/app/components/SeoJsonLd";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Discover market momentum, asset trends, and a polished trading dashboard with TradeBoard.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "TradeBoard | Market intelligence",
+    description:
+      "Discover market momentum, asset trends, and a polished trading dashboard with TradeBoard.",
+    url: "/",
+    type: "website",
+  },
+};
 
 const insights = [
   { label: "Momentum", value: "+12.8%" },
@@ -28,6 +46,16 @@ const features = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_28%),linear-gradient(135deg,_#f8fbff_0%,_#eef4ff_100%)] text-slate-900">
+      <SeoJsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "TradeBoard",
+          url: "https://tradeboard.example.com",
+          description:
+            "TradeBoard delivers market intelligence, asset trends, and polished dashboards for modern traders.",
+        }}
+      />
       <main className="mx-auto flex max-w-7xl flex-col px-6 py-6 lg:px-8 lg:py-8">
         <header className="mb-6 flex items-center justify-between rounded-full border border-slate-200/80 bg-white/70 px-4 py-3 shadow-sm backdrop-blur-xl">
           <div className="flex items-center gap-3">
