@@ -90,16 +90,10 @@ export default function Home() {
               Monitor momentum, compare top movers, and stay ahead with a beautifully simple dashboard built for fast decisions.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/markets"
-                className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-              >
-                Explore markets
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              
               <Link
                 href="/dashboard"
-                className="inline-flex items-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                className="inline-flex items-center rounded-full border  bg-slate-950 border-slate-300 px-5 py-3 text-sm font-semibold text-white transition hover:border-slate-400 hover:bg-slate-50"
               >
                 Open dashboard
               </Link>
